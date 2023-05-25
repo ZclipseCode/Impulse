@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] float tileSize;
     PlayerMovement playerMovement;
 
     private void Awake()
@@ -24,7 +25,12 @@ public class PlayerController : MonoBehaviour
 
     private void DoMovement(InputAction.CallbackContext context)
     {
-        Debug.Log(playerMovement.Player.Movement.ReadValue<Vector2>());
+        if (GameController.gameState == States.PLAYER)
+        {
+            transform.position += new Vector3(playerMovement.Player.Movement.ReadValue<Vector2>().x, playerMovement.Player.Movement.ReadValue<Vector2>().y);
+
+            GameController.gameState = States.ENEMIES;
+        }
     }
 
     private void DoShoot(InputAction.CallbackContext context)
@@ -36,5 +42,11 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement.Player.Movement.Disable();
         playerMovement.Player.Shoot.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        playerMovement.Player.Movement.performed -= DoMovement;
+        playerMovement.Player.Shoot.performed -= DoShoot;
     }
 }
