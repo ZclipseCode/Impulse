@@ -8,16 +8,27 @@ public class GameController : MonoBehaviour
     [SerializeField] States initialState = States.MENU;
     public static States gameState;
 
-    int enemyTurns;
-
     public delegate void EnemyTurnHandler();
     public static EnemyTurnHandler enemyTurnHandler;
+
+    public delegate void PlayerTurnHandler();
+    public static PlayerTurnHandler playerTurnHandler;
+
+    public delegate void EnemyHandler();
+    public static EnemyHandler enemyHandler;
+
+    [SerializeField] int enemies = 0;
+    [SerializeField] int enemyTurns = 0;
 
     private void Awake()
     {
         gameState = initialState;
 
-        enemyTurnHandler += AddEnemyTurn;
+        enemyTurnHandler += CheckEnemyTurns;
+
+        playerTurnHandler += PlayerTurnEnded;
+
+        enemyHandler += EnemyAdded;
     }
 
     private void Update()
@@ -25,14 +36,37 @@ public class GameController : MonoBehaviour
         
     }
 
-    private void AddEnemyTurn()
+    private void CheckEnemyTurns()
     {
-        enemyTurns++;
-        Debug.Log(enemyTurns);
+        if (enemyTurns <= 0)
+        {
+            gameState = States.PLAYER;
+        }
+        else
+        {
+            //enemyTurns--;
+            gameState = States.ENEMIES;
+        }
+    }
+
+    private void PlayerTurnEnded()
+    {
+        //gameState = States.ENEMIES;
+        enemyTurns = enemies;
+        CheckEnemyTurns();
+    }
+
+    private void EnemyAdded()
+    {
+        enemies++;
     }
 
     private void OnDestroy()
     {
-        enemyTurnHandler -= AddEnemyTurn;
+        enemyTurnHandler -= CheckEnemyTurns;
+
+        playerTurnHandler -= PlayerTurnEnded;
+
+        enemyHandler -= EnemyAdded;
     }
 }

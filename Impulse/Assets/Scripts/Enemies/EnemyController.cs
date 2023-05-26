@@ -7,21 +7,22 @@ public class EnemyController : MonoBehaviour
 {
     private void Awake()
     {
-        GameController.enemyTurnHandler += AddTurn;
+        GameController.enemyTurnHandler += EndTurn;
     }
 
     private void Start()
     {
-        GameController.enemyTurnHandler?.Invoke();
+        //GameController.enemyTurnHandler?.Invoke();
+        GameController.enemyHandler?.Invoke();
     }
 
-    private void AddTurn()
+    private void EndTurn()
     {
-        Debug.Log("added");
+        Debug.Log("turn ended");
     }
 
     private void OnDestroy()
     {
-        GameController.enemyTurnHandler -= AddTurn;
+        GameController.enemyTurnHandler -= EndTurn;
     }
 }

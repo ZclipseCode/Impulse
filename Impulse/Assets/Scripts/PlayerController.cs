@@ -12,14 +12,14 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerMovement = new PlayerMovement();
+
+        playerMovement.Player.Movement.performed += DoMovement;
+        playerMovement.Player.Shoot.performed += DoShoot;
     }
 
     private void OnEnable()
     {
-        playerMovement.Player.Movement.performed += DoMovement;
         playerMovement.Player.Movement.Enable();
-
-        playerMovement.Player.Shoot.performed += DoShoot;
         playerMovement.Player.Shoot.Enable();
     }
 
@@ -29,13 +29,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.position += new Vector3(playerMovement.Player.Movement.ReadValue<Vector2>().x, playerMovement.Player.Movement.ReadValue<Vector2>().y);
 
-            GameController.gameState = States.ENEMIES;
+            GameController.playerTurnHandler?.Invoke();
         }
     }
 
     private void DoShoot(InputAction.CallbackContext context)
     {
-        Debug.Log("shoot");
+        if (GameController.gameState == States.PLAYER)
+        {
+            Debug.Log("shoot");
+
+            GameController.playerTurnHandler?.Invoke();
+        }
     }
 
     private void OnDisable()
