@@ -16,11 +16,17 @@ public class PlayerController : MonoBehaviour
     {
         controls.Enable();
         controls.Player.Movement.performed += OnMovement;
+        controls.Player.Shoot.performed += OnShoot;
     }
 
     void OnMovement(InputAction.CallbackContext context)
     {
-        Debug.Log("context");
+        transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
+    }
+
+    void OnShoot(InputAction.CallbackContext context)
+    {
+        Debug.Log("Shoot");
     }
 
     private void OnDisable()
@@ -31,5 +37,6 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         controls.Player.Movement.performed -= OnMovement;
+        controls.Player.Shoot.performed -= OnShoot;
     }
 }
