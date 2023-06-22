@@ -5,7 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] LayerMask barrierLayer;
+
     PlayerControls controls;
+    float circleOverlap = 0.2f;
 
     private void Awake()
     {
@@ -17,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
     void OnMovement(InputAction.CallbackContext context)
     {
-        transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
+        if (!Physics2D.OverlapCircle(transform.position + new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0), circleOverlap, barrierLayer))
+        {
+            transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
+        }
     }
 
     void OnShoot(InputAction.CallbackContext context)
