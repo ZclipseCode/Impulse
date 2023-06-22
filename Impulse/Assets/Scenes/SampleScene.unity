@@ -951,7 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrierLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
 --- !u!50 &443027564
 Rigidbody2D:
   serializedVersion: 4
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 1404714233}
   - component: {fileID: 1404714236}
   - component: {fileID: 1404714235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Alien Ooze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
