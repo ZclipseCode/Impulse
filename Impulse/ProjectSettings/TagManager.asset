@@ -44,8 +44,20 @@ TagManager:
   - name: Background
     uniqueID: 2470454147
     locked: 0
+  - name: Passable
+    uniqueID: 2178728503
+    locked: 0
+  - name: Barrier
+    uniqueID: 3579675991
+    locked: 0
   - name: Midground
     uniqueID: 1265711941
+    locked: 0
+  - name: Characters
+    uniqueID: 2574585499
+    locked: 0
+  - name: Held Weapons
+    uniqueID: 941583983
     locked: 0
   - name: Foreground
     uniqueID: 2070056947
