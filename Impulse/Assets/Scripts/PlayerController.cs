@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] LayerMask barrierLayer;
+    [SerializeField] LayerMask barrierLayers;
 
     PlayerControls controls;
     float circleOverlap = 0.2f;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMovement(InputAction.CallbackContext context)
     {
-        if (!Physics2D.OverlapCircle(transform.position + new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0), circleOverlap, barrierLayer))
+        if (!Physics2D.OverlapCircle(transform.position + new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0), circleOverlap, barrierLayers))
         {
             transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
         }
