@@ -21,6 +21,14 @@ public class PlayerController : MonoBehaviour
 
     void OnMovement(InputAction.CallbackContext context)
     {
+        //if (Mathf.Abs(context.ReadValue<Vector2>().x) > 0)
+        //{
+        //    transform.position += new Vector3(context.ReadValue<Vector2>().x, 0, 0);
+        //}
+        //else if (Mathf.Abs(context.ReadValue<Vector2>().y) > 0)
+        //{
+        //    transform.position += new Vector3(context.ReadValue<Vector2>().y, 0, 0);
+        //}
         transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
     }
 
