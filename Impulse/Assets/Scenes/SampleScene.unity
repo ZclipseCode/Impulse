@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2f217a2db8bd84b8b09b00d008333a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrierLayer:
+  barrierLayers:
     serializedVersion: 2
     m_Bits: 192
 --- !u!50 &443027564
