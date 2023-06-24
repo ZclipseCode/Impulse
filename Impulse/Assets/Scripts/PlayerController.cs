@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Movement
 {
     [SerializeField] LayerMask barrierLayers;
 
     PlayerControls controls;
-    float circleOverlap = 0.2f;
 
     private void Awake()
     {
@@ -20,10 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMovement(InputAction.CallbackContext context)
     {
-        if (!Physics2D.OverlapCircle(transform.position + new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0), circleOverlap, barrierLayers))
-        {
-            transform.position += new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0);
-        }
+        Move(context.ReadValue<Vector2>(), barrierLayers);
     }
 
     void OnShoot(InputAction.CallbackContext context)
