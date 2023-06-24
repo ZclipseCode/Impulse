@@ -25,22 +25,13 @@ public class Pathfinding : MonoBehaviour
         TileNode startNode = grid.NodeFromWorldPoint(startPos);
         TileNode targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        List<TileNode> openSet = new List<TileNode>();
+        Heap<TileNode> openSet = new Heap<TileNode>(grid.MaxSize);
         HashSet<TileNode> closedSet = new HashSet<TileNode>();
         openSet.Add(startNode);
 
         while (openSet.Count > 0)
         {
-            TileNode currentNode = openSet[0];
-            for (int i = 1; i < openSet.Count; i++)
-            {
-                if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
-                {
-                    currentNode = openSet[i];
-                }
-            }
-
-            openSet.Remove(currentNode);
+            TileNode currentNode = openSet.RemoveFirst();
             closedSet.Add(currentNode);
 
             if (currentNode == targetNode)
