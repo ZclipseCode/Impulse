@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class TilePathfinding : MonoBehaviour
 {
-    TileGrid grid;
+    NewTileGrid grid;
     Vector3 nextPos;
 
     private void Awake()
     {
-        grid = GameObject.FindGameObjectWithTag("Pathfinding").GetComponent<TileGrid>();
+        grid = GameObject.FindGameObjectWithTag("Pathfinding").GetComponent<NewTileGrid>();
     }
 
     public void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -72,7 +72,6 @@ public class TilePathfinding : MonoBehaviour
 
         if (path.Count >= 1)
         {
-            //nextPos = new Vector3(path[1].gridX, path[1].gridY);
             nextPos = path[0].pos;
         }
     }

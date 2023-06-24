@@ -17,9 +17,9 @@ public class Movement : MonoBehaviour
 
     public void MoveTo(Vector2 input)
     {
-        if (!Physics2D.OverlapCircle(new Vector3(input.x, input.y, 0), circleOverlap, barrierLayers))
-        {
+        //if (!Physics2D.OverlapCircle(new Vector3(input.x, input.y, 0), circleOverlap, barrierLayers))
+        //{
             transform.position = new Vector3(input.x, input.y, 0);
-        }
+        //}
     }
 }
