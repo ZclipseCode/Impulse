@@ -16,12 +16,6 @@ public class TileNode : IHeapItem<TileNode>
 
     public TileNode(bool walkable, Vector3 pos, int gridX, int gridY)
     {
-        //this.gCost = gCost;
-        //this.hCost = hCost;
-        //this.pos = pos;
-
-        //fCost = this.gCost + this.hCost;
-
         this.walkable = walkable;
         this.pos = pos;
         this.gridX = gridX;
@@ -57,9 +51,4 @@ public class TileNode : IHeapItem<TileNode>
         }
         return -compare;
     }
-
-    //public override string ToString()
-    //{
-    //    return $"G cost = {gCost}, H cost = {hCost}, F cost = {fCost}, position = {pos}";
-    //}
 }
