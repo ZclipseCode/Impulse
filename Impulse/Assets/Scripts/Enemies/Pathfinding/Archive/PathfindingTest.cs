@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Pathfinding : MonoBehaviour
+public class PathfindingTest : MonoBehaviour
 {
     [SerializeField] Tilemap passableTilemap;
 
@@ -28,7 +28,7 @@ public class Pathfinding : MonoBehaviour
 
         // adds the starting node to "open"
         Vector3Int enemyPos = Vector3Int.FloorToInt(gameObject.transform.position);
-        TileNode enemyNode = new TileNode(true, enemyPos);
+        TileNode enemyNode = new TileNode(true, enemyPos, enemyPos.x, enemyPos.y);
         open.Add(enemyNode);
     }
 
