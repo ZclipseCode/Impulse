@@ -5,22 +5,15 @@ using UnityEngine;
 
 public class TilePathfinding : MonoBehaviour
 {
-    public Transform seeker;
-    public Transform target;
-
     TileGrid grid;
+    Vector3 nextPos;
 
     private void Awake()
     {
-        grid = GetComponent<TileGrid>();
+        grid = GameObject.FindGameObjectWithTag("Pathfinding").GetComponent<TileGrid>();
     }
 
-    private void Update()
-    {
-        FindPath(seeker.position, target.position);
-    }
-
-    void FindPath(Vector3 startPos, Vector3 targetPos)
+    public void FindPath(Vector3 startPos, Vector3 targetPos)
     {
         TileNode startNode = grid.NodeFromWorldPoint(startPos);
         TileNode targetNode = grid.NodeFromWorldPoint(targetPos);
@@ -77,7 +70,11 @@ public class TilePathfinding : MonoBehaviour
 
         grid.path = path;
 
-        Debug.Log(startNode.gridX);
+        if (path.Count >= 1)
+        {
+            //nextPos = new Vector3(path[1].gridX, path[1].gridY);
+            nextPos = path[0].pos;
+        }
     }
 
     int GetDistance(TileNode nodeA, TileNode nodeB)
@@ -90,5 +87,10 @@ public class TilePathfinding : MonoBehaviour
             return 14 * disY + 10 * (disX - disY);
         }
         return 14 * disX + 10 * (disY - disX);
+    }
+
+    public Vector3 GetNextPos()
+    {
+        return nextPos;
     }
 }

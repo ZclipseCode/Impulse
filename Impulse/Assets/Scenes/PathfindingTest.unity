@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 443027563}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,6 +1095,8 @@ GameObject:
   - component: {fileID: 1404714233}
   - component: {fileID: 1404714236}
   - component: {fileID: 1404714235}
+  - component: {fileID: 1404714238}
+  - component: {fileID: 1404714237}
   m_Layer: 7
   m_Name: Alien Ooze
   m_TagString: Untagged
@@ -1161,7 +1163,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404714232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4, y: 1.75, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1216,6 +1218,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1404714237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404714232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526b6a051909009408dfe9e6d1d77740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrierLayers:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1404714238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404714232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1f673ccb2f97f47b52616192e9b2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1502055079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,10 +1255,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1502055081}
   - component: {fileID: 1502055082}
-  - component: {fileID: 1502055083}
   m_Layer: 0
   m_Name: Pathfinding
-  m_TagString: Untagged
+  m_TagString: Pathfinding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1267,20 +1295,6 @@ MonoBehaviour:
     m_Bits: 64
   gridWorldSize: {x: 18, y: 8}
   nodeRadius: 0.5
---- !u!114 &1502055083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502055079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1f673ccb2f97f47b52616192e9b2ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seeker: {fileID: 1404714234}
-  target: {fileID: 443027562}
 --- !u!1 &1788981755
 GameObject:
   m_ObjectHideFlags: 0

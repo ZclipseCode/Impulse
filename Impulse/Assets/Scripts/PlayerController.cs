@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Movement
 {
-    [SerializeField] LayerMask barrierLayers;
-
     PlayerControls controls;
 
     private void Awake()
@@ -19,7 +17,7 @@ public class PlayerController : Movement
 
     void OnMovement(InputAction.CallbackContext context)
     {
-        Move(context.ReadValue<Vector2>(), barrierLayers);
+        MoveAdjacent(context.ReadValue<Vector2>());
     }
 
     void OnShoot(InputAction.CallbackContext context)
